@@ -1,0 +1,374 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+.root {
+	-fx-txid-color:	lightgrey;
+	
+	-fx-update-color: #039ED3;
+	-fx-background-default: #DCDCDC; /* 	GAINSBORO 	*/
+	
+	/*-fx-font-size: 10;*/
+		
+}
+
+@font-face {
+    src: url("OpenSansEmoji.ttf");
+}
+
+.label {
+	-fx-font-family: "OpenSansEmoji";
+}
+
+.splash Text{
+	-fx-font-weight: bold;
+	-fx-font-size: 16;
+	-fx-translate-y: 16;
+	-fx-translate-x: 4;
+}
+.fading .image-view {
+	-fx-opacity: 0.3;
+}
+
+.tab-pane {
+	-fx-open-tab-animation: grow;
+	-fx-close-tab-animation: grow;
+}
+.tab-pane .tab-plus .tab-label {
+	-fx-font-weight: bold;
+}
+
+
+.tx-view #placeholder.label {
+	-fx-font-weight: bold;
+	-fx-font-size: 16;
+	-fx-translate-y: +128;
+}
+.tx-view #placeholder.label:alert {
+	-fx-text-fill: red;
+}
+.tx-view #placeholder.label:info {
+	-fx-text-fill: blue;
+}
+.tx-view #envelope.label {
+	-fx-text-fill: -fx-accent;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+	-fx-min-width: 18;
+	-fx-alignment: center;
+}
+.tx-view .placeholder {
+	-fx-background-color:  linear-gradient(to right, derive(-fx-background,-30%), derive(-fx-background,50%) 50%, derive(-fx-background,-30%));				  
+}
+.tx-view .table-row-cell:empty {
+    -fx-background-color: linear-gradient(to right, derive(-fx-background,-30%), derive(-fx-background,50%) 50%, derive(-fx-background,-30%));
+}
+.tx-view .progress-indicator-table-cell {
+	-fx-padding: 3 2 2 2; /*top right bottom left */
+}
+.tx-view .progress-indicator-table-cell .percentage {
+    -fx-fill:null;
+    -fx-font-size: 0;
+}
+
+.tx-view .type-table-cell:encrypt {
+	-fx-text-fill: limegreen;
+}
+.tx-view .type-table-cell:noencrypt {
+	-fx-text-fill: darkorange;
+}
+.tx-view .type-table-cell:nodecrypt .text {
+	-fx-fill: crimson;
+	-fx-strikethrough: true;
+}
+
+
+.book-table .address-table-cell:encrypt {
+	-fx-text-fill: limegreen;
+}
+.book-table .address-table-cell:noencrypt {
+	-fx-text-fill: darkorange;
+}
+.book-table .address-table-cell:multisig {
+	-fx-text-fill: slateblue;
+}
+
+
+.tx-view #from.label {
+	-fx-text-fill: indigo;
+	-fx-graphic: url("arrow-from16x16.png");
+	/*-fx-content-display: bottom;*/
+}
+.tx-view #to.label {
+	-fx-text-fill: indigo;
+	-fx-graphic: url("arrow-to16x16.png");
+	/*-fx-content-display: top;*/
+}
+.tx-view .amount-table-cell {
+	-fx-font-size: 12;
+	-fx-alignment: top-right;
+}
+.tx-view .amount-table-cell:positive {
+	-fx-text-fill: green;
+}
+.tx-view .amount-table-cell:negative {
+	-fx-text-fill: red;
+}
+
+.text-view {
+	-fx-background-color: -fx-background;
+	-fx-wrap-text: true;
+}
+
+.image-view-table-cell {
+	-fx-cursor: hand;
+	-fx-alignment: center;
+}
+.image-view-table-cell:hover {
+	-fx-background-color: -fx-cell-hover-color;
+}
+.image-view-table .column-header-background {
+	-fx-pref-height: 1;
+	-fx-max-height: 1;
+	-fx-min-height: 0;
+}
+
+.vbox-form, .wizard-page {
+	-fx-spacing: 8;
+	-fx-padding: 16;
+	-fx-alignment: top-center;
+	-fx-fill-width: true;
+}
+.vbox-form .slider {
+	-fx-show-tick-labels: true;
+	-fx-show-tick-marks: true;
+	-fx-major-tick-unit: 31;
+	-fx-minor-tick-count: 6;
+}
+
+.job-info .progress-indicator {
+	-fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 30, 0.5, 6, 6);
+	
+	/*-fx-background-color: rgba(0,0,0,0.2);*/
+}
+.job-info .label {
+	-fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 30, 0.5, 6, 6);
+	-fx-text-fill: -fx-accent;
+	-fx-font-weight: bold;
+	-fx-font-size: 16;
+	-fx-wrap-text: true;
+	
+	-fx-alignment: center;
+	
+	/*-fx-background-color: rgba(0,0,0,0.2);*/
+}
+.job-info .label:alert {
+	-fx-effect: dropshadow(three-pass-box, derive(red, +20%), 30, 0.5, 6, 6);
+	-fx-text-fill: red;
+	
+	/*-fx-background-color: rgba(0,0,0,0.2);*/
+}
+
+.split-pane-divider {
+	-fx-padding: 0 2 0 2;
+}
+
+.post-editor VBox {
+	-fx-alignment: bottom-right;
+	-fx-fill-width: true;
+}
+
+.post-editor #send.button:alert {
+	-fx-text-fill: red;	
+}
+.post-editor #send.tool-bar {
+	-fx-alignment: center-right;
+}
+.post-editor #send HBox {
+	-fx-spacing: 8;
+}
+.post-editor .check-box {
+	-fx-padding: 0 3 0 0;
+}
+
+.post-editor .book-view * {
+	/*-fx-font-size: 10;*/
+}
+
+.status-view {
+	-fx-hgap: 8;
+	-fx-vgap: 8;
+	/*-fx-grid-lines-visible: true;*/
+	-fx-padding: 16;
+	
+	-fx-font-weight: bold;
+	
+}
+.status-view .field {
+	-fx-font-weight: normal;
+}
+.status-view #info.label:alert {
+	-fx-text-fill: red;
+}
+.status-view #info.label:info {
+	-fx-text-fill: blue;
+}
+.status-view .column-header-background {
+	-fx-pref-height: 0;
+	-fx-max-height: 0;
+	-fx-min-height: 0;
+}
+.status-view .scroll-bar * {
+	-fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+.status-view .tx-view:disabled {
+	-fx-opacity: 1;
+	-fx-font-weight: normal;
+	-fx-scale-x: 0.625;
+	-fx-scale-y: 0.625;
+	
+	-fx-background-color: transparent;
+
+	
+	-fx-effect: innershadow(three-pass-box, derive(cadetblue, -20%), 20, 0.1, 5, 5);
+}
+.status-view .tx-view:disabled * {
+	-fx-opacity: 1;
+}
+
+.status-view .pin-view {
+	-fx-opacity: 1;
+
+	-fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 20, 0.1, 3, 3);
+}
+
+
+
+.coins-view {
+	-fx-hgap: 8;
+	-fx-vgap: 8;
+	/*-fx-grid-lines-visible: true;*/
+	-fx-padding: 16;
+}
+.coins-view #payto.tool-bar {
+	-fx-alignment: center-right;
+	-fx-padding: 8;
+}
+.coins-view #payto HBox {
+	-fx-spacing: 8;
+}
+.coins-view #payto HBox .label {
+	-fx-underline: true;
+	-fx-padding: 0 0 0 12;
+}
+.coins-view #payto HBox Text {
+	-fx-font-weight: bold;
+}
+
+.wizard-page {
+	-fx-spacing: 8;
+	-fx-padding: 16;
+	-fx-alignment: top-left;
+	-fx-fill-width: true;
+}
+.wizard-page .label {
+	-fx-wrap-text: true;
+}
+
+.wizard-page HBox {
+	-fx-spacing: 8;
+	-fx-padding: -2;
+}
+
+.wizard-page .hyperlink {
+	-fx-text-fill: blue;
+}
+
+.wizard-page #LONG.button {
+    -fx-background-image: url("longcoin_128x128.png");
+    -fx-background-size: 28;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-insets: -2;
+    -fx-cursor: hand;
+}
+.wizard-page #DOGE.button {
+    -fx-background-image: url("dogecoin_128x128.png");
+    -fx-background-size: 28;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-insets: -2;
+    -fx-cursor: hand;
+}
+.wizard-page #ETH.button {
+    -fx-background-image: url("ethereum_128x128.png");
+    -fx-background-size: 28;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-insets: -2;
+    -fx-cursor: hand;
+}
+.wizard-page #LTC.button {
+    -fx-background-image: url("litecoin_128x128.png");
+    -fx-background-size: 28;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-insets: -2;
+    -fx-cursor: hand;
+}
+.wizard-page #BTC.button {
+    -fx-background-image: url("bitcoin_128x128.png");
+    -fx-background-size: 28;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-insets: -2;
+    -fx-cursor: hand;
+}
+
+.menu-bar #create-chat > .label {
+	-fx-graphic: url("chat_16x16.png");
+}
+.menu-bar #connect-chat > .label {
+	-fx-graphic: url("connect_16x16.png");
+}
+.menu-bar #create-channel > .label {
+	-fx-graphic: url("create_16x16.png");
+}
+.menu-bar #connect-channel > .label {
+	-fx-graphic: url("connect_16x16.png");
+}
+
+
+.menu-bar #unlock-wallet > .label {
+	-fx-graphic: url("unlock_16x16.png");
+}
+.menu-bar #encrypt-wallet > .label {
+	-fx-graphic: url("lock_16x16.png");
+}
+.menu-bar #change-password > .label {
+	-fx-graphic: url("key_16x16.png");
+}
+
+.menu-bar #wallet-prevention > .label {
+	-fx-graphic: url("maintenance_16x16.png");
+}
+.menu-bar #rpc-console > .label {
+	-fx-graphic: url("console_16x16.png");
+}
+
+.menu-bar #mobile-version > .label {
+	-fx-graphic: url("mobile_16x16.png");
+}
+
+
+.console > .scroll-pane {
+-fx-vbar-policy:always; /* Control the vertical ScrollBar (always,needed,never) */
+/*-fx-hbar-policy:always;*/ /* Control the horizontal ScrollBar (always,needed,never) */
+
+}
+
