@@ -18,7 +18,7 @@ public class TransactionsController extends Thread {
 	
 	// Желательная реализация, чтобы контроллер ничего не знал о специфике view и отдавал данные через интерфейс или слушателей
 	
-	static final int POLLING_INTERVAL=2663; 	// Интервал опроса демона rpc в штаном режиме ms
+	static final int POLLING_INTERVAL=3323; 	// Интервал опроса демона rpc в штаном режиме ms
 	static final int SPEEDUP_INTERVAL=6;		// если принудительный опрос (для скроллинга)
 	
 	

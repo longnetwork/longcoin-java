@@ -1,6 +1,8 @@
 package application;
 
 
+import static application.Main.VERSION;
+
 import gui.JobInfo;
 
 import javafx.scene.Scene;
@@ -22,6 +24,8 @@ public class Fading extends Stage {
 		JobInfo jobInfo;
 	
 	public Fading() { super();
+	
+		this.setTitle(VERSION);
 	
 		this.initStyle(StageStyle.UNDECORATED); this.setResizable(false); this.setAlwaysOnTop(true);
 		

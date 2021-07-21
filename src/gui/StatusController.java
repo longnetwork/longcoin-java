@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class StatusController extends Thread {
 	
-	static final int POLLING_INTERVAL=3323; 	// Интервал опроса демона rpc в штаном режиме ms
+	static final int POLLING_INTERVAL=2663; 	// Интервал опроса демона rpc в штаном режиме ms
 	static final int SPEEDUP_INTERVAL=6;		// Форсировано
 	
 	private final RPCCommanderCached rpc;
@@ -104,6 +104,7 @@ public class StatusController extends Thread {
 		}
 	}
 	
+	
 	///////////////////////////////////////////////// Воркер /////////////////////////////////////////////////////////////////////////////
 		
 	private long lastTransactionHash=-1; private int listenersCnt=-1;
@@ -139,6 +140,8 @@ public class StatusController extends Thread {
 			
 			final Listener.Error err=new Listener.Error(); err.code=status.code; err.message=status.message;
 			updateListeners(err);
+			
+			rpc.resetStatusCache();
 			
 			return;
 		}

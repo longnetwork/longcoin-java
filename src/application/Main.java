@@ -1,6 +1,7 @@
 package application;
 	
 import coredrv.*;
+import util.Css;
 import util.L10n;
 import util.LOGGER;
 import util.Threads;
@@ -26,6 +27,7 @@ import gui.DonationWizard;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader.StateChangeNotification;
+import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -36,11 +38,14 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.shape.Rectangle;
+
 
 
 public class Main extends Application {
@@ -50,6 +55,8 @@ public class Main extends Application {
 	
 	public static final double SCREEN_HEIGHT=Screen.getPrimary().getBounds().getHeight();
 	public static final double SCREEN_WIDTH=Screen.getPrimary().getBounds().getWidth();
+	
+	static final double AGE21_HEIGHT = Css.getTextBounds("┃⟺",12).getHeight();
 	
 	// Коррекция размеров дочерних окон на уровне вложения 1, 2, 3
 	public static final double H1,H2,H3,W1,W2,W3;	
@@ -104,6 +111,7 @@ public class Main extends Application {
 	public static AddressBookController addressBookController;
 	public static StatusController statusController;
 	
+	
 	public static Main application;
 	
 	public static void daemonShutDown() throws Exception {
@@ -138,7 +146,8 @@ public class Main extends Application {
 		}
 	}
 	public static void daemonStart(String ...additionOptions) throws Exception {
-		if(rpcCommander!=null) rpcCommander.invalidateStatus();		// Нужно при рестартах, чтобы запрос пароля не выскакивал до окончания процесса загрузки
+		// FIXME - инвалидация (очистка) всех кешей
+		
 		if(longcoinDaemon!=null) longcoinDaemon.start(additionOptions);
 	}
 	
@@ -432,17 +441,15 @@ public class Main extends Application {
 		}});
 		
 		// FIXME через жопу впихнуть картинку в зону MenuBar (чтобы базовые стили были одинаковые по всей длине в topBox и картинка хорошо вписалась)
-		String age21url = ClassLoader.getSystemResource("res/age21.png").toExternalForm();
-		Menu age21pic=new Menu(); age21pic.setDisable(true); 
-		MenuBar age21bar=new MenuBar(age21pic); 
-		age21bar.setStyle(
-				"-fx-background-image: url('" + age21url + "'); " +
-				"-fx-background-position: center center; " +
-				"-fx-background-size: 32 24;" +
-				"-fx-background-repeat: no-repeat;"
-		);
 		
-		HBox topBox=new HBox(menu,age21bar); HBox.setHgrow(menu, Priority.ALWAYS);
+		ImageView age21img=new ImageView("res/age21.png");
+		age21img.setFitWidth(AGE21_HEIGHT*1.777777777777d); age21img.setFitHeight(AGE21_HEIGHT);
+		age21img.setSmooth(true);
+		
+		MenuBar age21bar=new MenuBar(new Menu(null,age21img)); 
+		
+		HBox topBox=new HBox(menu,age21bar); HBox.setHgrow(menu, Priority.ALWAYS); 
+		
 	    
 		root.setTop(topBox);
 	}

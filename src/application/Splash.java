@@ -28,6 +28,8 @@ public class Splash extends Preloader {
 	}
 
 	@Override public void start(Stage primaryStage) throws Exception {
+		
+		primaryStage.setTitle(VERSION);
 
 		stage=primaryStage;
 		

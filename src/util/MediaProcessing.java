@@ -70,6 +70,8 @@ public final class MediaProcessing {
 			
 			ProcessBuilder pb = new ProcessBuilder(new ArrayList<>(Arrays.asList(cmd.split("￮")))).inheritIO();
 			
+			LOGGER.info(pb.command().toString()); // TODO debug
+			
 			Process proc = pb.start();
 	        	 
 			boolean completed = proc.waitFor(PROSESS_TIMEOUT, TimeUnit.SECONDS);
@@ -141,6 +143,8 @@ public final class MediaProcessing {
 			String cmd=String.format(Locale.ROOT,ffmpeg,ifile.getAbsolutePath(),k,k,(int)crf,ofile.getAbsolutePath()); // Locale.ROOT - точка десятичный разделитель
 			
 			ProcessBuilder pb = new ProcessBuilder(new ArrayList<>(Arrays.asList(cmd.split("￮")))).inheritIO();
+			
+			LOGGER.info(pb.command().toString()); // TODO debug
 			
 			Process proc = pb.start();
 	        	 

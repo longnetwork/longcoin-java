@@ -154,8 +154,7 @@ public class RPCCommanderCached extends RPCCommander {
 	};
 	private final CachedStatus cacheStatus=new CachedStatus();
 
-	@Override	
-	synchronized public MapResponse getStatusInfo() {
+	@Override synchronized public MapResponse getStatusInfo() {
 		long time= System.currentTimeMillis();
 		
 		if(cacheStatus.data==null || (time-cacheStatus.expiry)>0) { // Обновление кеша
@@ -176,7 +175,29 @@ public class RPCCommanderCached extends RPCCommander {
 			return status;
 		}
 	}
-	synchronized public void invalidateStatus() {cacheStatus.data=null;} // XXX В случае рестарта ноды с опциями профилактики (чтобы ждать окончания процесса)
+	synchronized public void resetStatusCache() {cacheStatus.data=null;};
+	// Команды которые списывают мани должны инвалидировать статус (чтобы не ждать долго его обновления в кеше)
+	@Override synchronized public StringResponse sendToAddress(String address, long amount, boolean subtractFee) {
+		StringResponse res=super.sendToAddress(address,amount,subtractFee);
+		if(res.isOk()) cacheStatus.data=null;
+		return res;
+	}
+	@Override synchronized public StringResponse sendContent(String from, String to, String content, boolean open) {
+		StringResponse res=super.sendContent(from, to, content, open);
+		if(res.isOk()) cacheStatus.data=null;
+		return res;
+	}
+	@Override synchronized public StringResponse pinContent(String from, String to, String content, boolean open) {
+		StringResponse res=super.pinContent(from, to, content, open);
+		if(res.isOk()) cacheStatus.data=null;
+		return res;		
+	}
+	@Override synchronized public StringResponse sendMessage(String from, String to, String message) {
+		StringResponse res=super.sendMessage(from, to, message);
+		if(res.isOk()) cacheStatus.data=null;
+		return res;			
+	}
+	
 	
 	final int ADDRESSBOOK_MAX_AGE=14983;
 	private class CachedAddressBook { 
