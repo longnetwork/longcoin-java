@@ -15,7 +15,7 @@ All content is on your conscience! It cannot be cancelled!
 * Placement of pinned banners in groups with a lifetime limit.
 
 
-#Prerequisites (for Building and Run)
+# Prerequisites (for Building and Run)
 
 - installed `longcoind` (https://github.com/longnetwork/LONGNETWORK) ;
 - installed `openjdk-11-jdk`;
@@ -25,7 +25,7 @@ All content is on your conscience! It cannot be cancelled!
 Build Process
 ===========================================================================================================================================
 
-Edit the `PATH_TO_FX` environment variable in the `make.sh` file with the location of the openjfx library and execute that file:
+Edit the `PATH_TO_FX` environment variable in the `make.sh` file with the location of the `openjfx` library and execute that file:
 ```bash
 ./make.sh
 ```
@@ -33,7 +33,7 @@ Edit the `PATH_TO_FX` environment variable in the `make.sh` file with the locati
 Startup
 ===========================================================================================================================================
 
-Edit the `PATH_TO_FX` environment variable in the `start.sh` file with the location of the openjfx library and execute that file:
+Edit the `PATH_TO_FX` environment variable in the `start.sh` file with the location of the `openjfx` library and execute that file:
 ```bash
 ./start.sh
 ```
