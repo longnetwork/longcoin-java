@@ -361,6 +361,10 @@
 	-fx-graphic: url("console_16x16.png");
 }
 
+.menu-bar #quick-reference > .label {
+	-fx-graphic: url("help_16x16.png");
+}
+
 .menu-bar #mobile-version > .label {
 	-fx-graphic: url("mobile_16x16.png");
 }

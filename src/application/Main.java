@@ -18,6 +18,7 @@ import gui.EncryptWalletWizard;
 import gui.CreateChatWizard;
 import gui.PasswordForm;
 import gui.PreventionWalletWizard;
+import gui.QuickReferenceWizard;
 import gui.RPCConsoleForm;
 import gui.TransactionsController;
 import gui.StatusView;
@@ -405,10 +406,13 @@ public class Main extends Application {
 	        	
 	        
 	        Menu helpMenu = new Menu(L10n.t("Help")); 
+	        	MenuItem menuItemReference = new MenuItem(L10n.t("Quick Reference")); menuItemReference.setId("quick-reference");
+	        	menuItemReference.setOnAction((ev)->{ QuickReferenceWizard wizard=new QuickReferenceWizard(root); wizard.showAndWait(); });
+	        
 	        	MenuItem menuItemInfo = new MenuItem(L10n.t("Mobile Version")); menuItemInfo.setId("mobile-version");
 	        	menuItemInfo.setOnAction((ev)->{ DonationWizard wizard=new DonationWizard(root); wizard.showAndWait(); });
 	        	
-	        	helpMenu.getItems().addAll(menuItemInfo);
+	        	helpMenu.getItems().addAll(menuItemReference,menuItemInfo);
 	        	
 	        
 	        menu.getMenus().addAll(connectionMenu, toolsMenu, helpMenu);

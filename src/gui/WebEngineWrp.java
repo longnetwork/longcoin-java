@@ -238,7 +238,8 @@ public class WebEngineWrp {
 	static final Set<Long> srcdocSignatures = Set.of( // Только разрешенный безопасный контент для srcdoc
 			1464574902791903600L // Tetris
 	);
-	static final String knownEmbedRegExp="(?i)^(?>\\w{1,5}://)?(?>\\w+\\.)?(?>"+
+	//static final String knownEmbedRegExp="(?i)^(?>\\w{1,5}://)?(?>\\w+\\.)?(?>"+
+	static final String knownEmbedRegExp="(?i)(?>\\w{1,5}://)?(?>\\w+\\.)?(?>"+
 					 "youtu\\.be|"+
 					 "youtube\\.com"+
 										 ")(?>[^\\w\\.]|$)";
@@ -1059,16 +1060,15 @@ public class WebEngineWrp {
 						html.append("&nbsp;<audio controls preload='metadata' src='"+link+"'>"+desc+"</audio>&nbsp;");
 						
 					}
-					else if(mime.equals("video") || ext.equals("mp4")  ) 	// XXX Только то что может воспроизводить WebEngine
+					else if( (mime.equals("video") && !youtubeIdPattern.matcher(link).find()) || ext.equals("mp4") ) 	// XXX Только то что может воспроизводить WebEngine
 					{
 						if(desc==null || desc.isBlank()) desc=link;
 						
 						if(height<0) html.append("&nbsp;<video controls preload='metadata' src='");
 						else         html.append("&nbsp;<video controls preload='metadata' height="+height+" src='");
-						html.append(link).append("'>"+desc+"</video>&nbsp;");
+						html.append(link).append("'>"+(desc)+"</video>&nbsp;");
 					}
 					else {
-						
 						 if(!link.startsWith("link=") && knownEmbedPattern.matcher(link).find()) {
 								final Matcher idMatcher = youtubeIdPattern.matcher(link);
 								if(idMatcher.find()) { 
@@ -1080,7 +1080,10 @@ public class WebEngineWrp {
 										link="https://www.youtube.com/embed/"+id;
 										
 										if(height<0) html.append("&nbsp;<iframe allow='autoplay; picture-in-picture; encrypted-media; clipboard-write' src='");
-										else         html.append("&nbsp;<iframe height="+height+" allow='autoplay; picture-in-picture; encrypted-media; clipboard-write' src='");
+										else  {
+											String width=String.valueOf((int)Math.round(height*1.7777777777777777d));
+											html.append("&nbsp;<iframe height="+height+" width="+width+" allow='autoplay; picture-in-picture; encrypted-media; clipboard-write' src='");
+										}
 										html.append(link).append("'>"+desc+"</iframe>&nbsp;"); // frameborder=0
 									
 										return html.toString();
