@@ -48,5 +48,7 @@ public class Fading extends Stage {
 	public Fading(String info) { this();
 		jobInfo.progress(info);
 	}
+	
+	
 
 }

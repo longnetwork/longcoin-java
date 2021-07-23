@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.web.WebView;
@@ -24,7 +25,7 @@ public class WebViewWrp implements AutoCloseable {
 	public WebViewWrp() {this(null);}
 	public WebViewWrp(WebView webview) {
 		if(webview==null) webview=new WebView();
-		this.webview=webview;
+		this.webview=webview; this.webview.setBlendMode(BlendMode.SRC_OVER);
 		
 		this.engine=new WebEngineWrp(this.webview.getEngine());
 		
@@ -105,7 +106,7 @@ public class WebViewWrp implements AutoCloseable {
 			if(layoutInit<0) { layoutInit++;
 				this.webview.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, (ev)->{
 					// FIXME Необходима принудительная очистка через жопу медиа контента иначе jvm сегфолтится
-					if(layoutInit<1) { layoutInit++; // fireEvent от кадого WebView запланируется только 1 раз 
+					if(layoutInit<1) { layoutInit++; // fireEvent от каждого WebView запланируется только 1 раз 
 						final WindowEvent closeEvent =(WindowEvent)ev.clone(); ev.consume();
 						
 						//LOGGER.console("WindowEvent.WINDOW_CLOSE_REQUEST"); // TODO debug
