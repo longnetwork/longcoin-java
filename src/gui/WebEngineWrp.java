@@ -25,6 +25,7 @@ import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.concurrent.Worker;
 import util.Binary;
 import util.Css;
+import util.ECDSA;
 import util.LOGGER;
 
 public class WebEngineWrp {
@@ -235,9 +236,10 @@ public class WebEngineWrp {
 			//, "style" // <div style="background: url(image.png)">
 			//, "srcdoc" // <iframe srcdoc="<html-код>"></iframe> srcdoc проверяем по допустимым сигнатурам
 	);
-	static final Set<Long> srcdocSignatures = Set.of( // Только разрешенный безопасный контент для srcdoc
-			1464574902791903600L // Tetris
-	);
+	// Только разрешенный безопасный контент для srcdoc (должен быть подписан и подпись должна быть в атрибуде <iframe data-signature> )
+	static final String srcdocPubKeyHex=
+		"3056301006072A8648CE3D020106052B8104000A03420004C0BF959E7CEFB2672A81D44F1C048FCA26DAA11B4BED6D12344901F305954A0DD1B316985570FFDC147C8A1C593D625ED79345EBAAFC549E8F96A68BE0D44B4D";
+	
 	//static final String knownEmbedRegExp="(?i)^(?>\\w{1,5}://)?(?>\\w+\\.)?(?>"+
 	static final String knownEmbedRegExp="(?i)(?>\\w{1,5}://)?(?>\\w+\\.)?(?>"+
 					 "youtu\\.be|"+
@@ -252,7 +254,6 @@ public class WebEngineWrp {
 	// https://www.youtube.com/embed/BYz2Oq7hG5U
 	// Найденная группа паттерна это id видео с временными метками
 
-	
 										 
 	static private Map<Long,Path> cacheMedia=new HashMap<>(); // Чтобы не плодить кучу временных файлов при ререндерингах
 	//static final String TMPFILE_PREFIX="longJavaTmp";
@@ -859,14 +860,25 @@ public class WebEngineWrp {
 							);
 					}
 					else if("srcdoc".equals(attrName)) { // если есть srcdoc то src игнорируется
-						// Пропускаем только встроенный контент с известной сигнатурой в iframe
+						// Пропускаем только встроенный контент с правильной сигнатурой в iframe
 						// Движок его рендерит как есть, - сразу в обход DocuentProperty и LoadWorker
 						// Разрешения - в атрибутах sandbox и allow тега iframe
 						String content=attr.getValue();
 						if(content!=null) {
-							Long signature=Binary.longHash(content.replaceAll("[\\s'\"]", "")); // Без учета пробельных и кавычек
-							//LOGGER.console("signature: "+signature); // TODO debug
-							if(!srcdocSignatures.contains(signature)) {
+							String signature=tag.getAttribute("data-signature"); // hex-string
+							LOGGER.console("srcdoc signature: "+signature); // TODO debug
+							if(signature==null || signature.isBlank()) {
+								tag.removeAttributeNode(attr); j--; // Не церемонимся с неизвестными srcdoc
+								continue;
+							}
+							
+							// Проверяем подпись контента в srcdoc
+							boolean verifed=false;
+							try {
+								verifed=ECDSA.verify(ECDSA.hexStringToPublicKey(srcdocPubKeyHex), signature, content);
+							} catch (Exception ignore) {}
+							
+							if(!verifed) {
 								tag.removeAttributeNode(attr); j--; // Не церемонимся с неизвестными srcdoc
 							}
 						}

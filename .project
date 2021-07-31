@@ -22,12 +22,12 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1626380728165</id>
+			<id>1627684229653</id>
 			<name></name>
 			<type>13</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-src*</arguments>
+				<arguments>1.0-name-matches-false-true-src/*</arguments>
 			</matcher>
 		</filter>
 	</filteredResources>

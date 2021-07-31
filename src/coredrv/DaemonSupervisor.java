@@ -83,8 +83,18 @@ final public class DaemonSupervisor {
 		basicCmd.add(""); // Резервируем место под название бинарника для запуска
 		// Праметры RPC либо из конфига либо по-умолчанию
 		if(daemonConfig.getProperty("rpcport")==null) {daemonConfig.setProperty("rpcport","8878"); basicCmd.add("-rpcport=8878");}
+		
 		if(daemonConfig.getProperty("rpcuser")==null) {daemonConfig.setProperty("rpcuser","user"); basicCmd.add("-rpcuser=user");}
-		if(daemonConfig.getProperty("rpcpassword")==null) {daemonConfig.setProperty("rpcpassword","password"); basicCmd.add("-rpcpassword=password");}
+		
+		if(daemonConfig.getProperty("rpcpassword")==null || daemonConfig.getProperty("rpcpassword").equals("password") ) {
+			
+			String pwd= String.valueOf( (long)(Math.random()*Long.MAX_VALUE) );
+			
+			daemonConfig.setProperty("rpcpassword","password"+pwd); basicCmd.add("-rpcpassword=password"+pwd);
+			
+			LOGGER.warning("Change default RPC password to: "+"password"+pwd);
+			LOGGER.console("Change default RPC password to: "+"password"+pwd); // TODO debug
+		}
 		
 		if (daemonPath!=null) {  basicCmd.set(0,daemonPath.toString()); // бинарник
 			// Принудительные параметры запуска на тот случай если конфиг вообще не нашли а также предотвращаем демонизацию 
