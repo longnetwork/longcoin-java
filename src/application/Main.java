@@ -251,7 +251,10 @@ public class Main extends Application {
 		        
 			});
 			
-			
+			primaryStage.iconifiedProperty().addListener((obs, oldBoolean, newBoolean)->{
+				//LOGGER.console("iconified: "+oldBoolean+" "+newBoolean); // TODO debug
+				if(!newBoolean) primaryStage.setWidth(primaryStage.getWidth()+0.001);    // Не всегда обновляется после восстановления, - поэтому refrash 
+			});
 			
 			
 			primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (ev)-> { // TODO debug ctrl+D
