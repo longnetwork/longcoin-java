@@ -84,6 +84,42 @@ public class RPCConsoleForm extends Stage {
 					Response res=rpc.sendCommand(command, params);
 					if(res.data!=null) {
 						String out=rpc.convert(res.data); if(out==null || out.equals("null")) out="OK";
+						
+						if( ! "help".equals(command) ) { // Нужно раскидать табуляцию и переносы строк для удобного отображения json
+							
+							// TODO Нужно больше интеллекта (например в строках могут быть все символы []{},)
+							
+							StringBuilder tab=new StringBuilder();
+							StringBuilder frm=new StringBuilder();
+							
+							for(int i = 0; i < out.length(); i++)
+							{
+								
+							   char ch = out.charAt(i);
+							   
+							   switch (ch) {
+							       case '[':
+							       case '{':
+							    	   tab.append('\t');
+							    	   frm.append(ch).append('\n').append(tab);
+							    	   break;
+							       case ',':
+							    	   frm.append(ch).append('\n').append(tab);
+							    	   break;
+							       case ']':
+							       case '}':
+							    	   if( tab.length() > 0 ) tab.deleteCharAt( tab.length() - 1 );
+							    	   frm.append('\n').append(tab).append(ch);
+							    	   break;
+							       default:
+							    	   frm.append(ch);
+							   }
+							   
+							}
+							
+							out=frm.toString();
+						}
+						
 						text.appendText(out);
 					}
 					else text.appendText("error "+res.code+" ("+res.message+")");

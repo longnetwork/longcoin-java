@@ -50,7 +50,7 @@ import javafx.scene.layout.Priority;
 public class Main extends Application {
 	////////////////////////////////////////// Global Application Constants ////////////////////////////////////////////////
 	
-	public static final String VERSION="LONG Network v1.0f";
+	public static final String VERSION="LONG Network v1.0g";
 	
 	public static final double SCREEN_HEIGHT=Screen.getPrimary().getBounds().getHeight();
 	public static final double SCREEN_WIDTH=Screen.getPrimary().getBounds().getWidth();
