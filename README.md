@@ -44,5 +44,5 @@ Notes
 `longcoind` must be detected either by the system paths set in the `PATH` environment variable or be located in the current startup directory
 
 
-## The dragon is coming...  https://longnetwork.github.io/community.html
+## Donat  https://longnetwork.github.io/donat.html
 
