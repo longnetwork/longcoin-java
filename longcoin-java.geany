@@ -28,20 +28,21 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=6
-FILE_NAME_0=8428;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FCoinsView.java;0;4
+current_page=10
+FILE_NAME_0=8760;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FCoinsView.java;0;4
 FILE_NAME_1=18200;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FPostingEditorForm.java;0;4
 FILE_NAME_2=1704;Conf;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fres%2Fl10n.properties;0;4
 FILE_NAME_3=2748;Conf;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fres%2Fl10n_ru_RU.properties;0;4
 FILE_NAME_4=9348;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fcoredrv%2FRPCCommanderCached.java;0;4
 FILE_NAME_5=1771;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FAddressBookController.java;0;4
-FILE_NAME_6=40915;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fcoredrv%2FRPCCommander.java;0;4
+FILE_NAME_6=40654;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fcoredrv%2FRPCCommander.java;0;4
 FILE_NAME_7=6122;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FAddressBookView.java;0;4
 FILE_NAME_8=0;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FAddressBookTable.java;0;4
 FILE_NAME_9=0;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fgui%2FAddressBookModel.java;0;4
+FILE_NAME_10=1700;Java;0;EUTF-8;0;1;0;%2Fhome%2Fmint%2FWork%2Flongcoin-java%2Fsrc%2Fapplication%2FMain.java;0;4
 
 [VTE]
-last_dir=/home/mint/Work/longcoin-java/src/coredrv
+last_dir=/home/mint/Work/longcoin-java/src/application
 
 [build-menu]
 NF_00_LB=_Собрать
