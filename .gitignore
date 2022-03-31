@@ -1,0 +1,19 @@
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+
+!.git
+
+!longcoin-java.geany
+
+!bin
+!data
+!src
+!README*.*
+!longcoin.conf
+!make.sh
+!start.sh
+
+!longcoin-java.jar
+

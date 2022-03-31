@@ -6,9 +6,15 @@
 
 export PATH_TO_FX=/usr/share/openjfx/lib
 
+if [ -z "$1" ]
+then
+    javac --module-path $PATH_TO_FX --add-modules=javafx.base,javafx.controls,javafx.web,javafx.media,javafx.graphics -d bin\
+    $(find src -name "*.java") -classpath src/res
+    cp -r src/res bin
+else
+    javac --module-path $PATH_TO_FX --add-modules=javafx.base,javafx.controls,javafx.web,javafx.media,javafx.graphics -d bin\
+    $1 -classpath src/res -sourcepath src/
+fi
 
-javac --module-path $PATH_TO_FX --add-modules=javafx.base,javafx.controls,javafx.web,javafx.media,javafx.graphics -d bin\
- $(find src -name "*.java") -classpath src/res
 
-cp -r src/res bin
 
